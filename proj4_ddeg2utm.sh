@@ -1,5 +1,6 @@
 #!/bin/bash
 #GPL2 jmenezes example proj4, from lon/lat to utm wgs; 2017-05-28
+# example zone=43  north
 #EPSG:4326
 #73.218063 0.225385 0 1726 2916 R0011006.jpg A
 if [ $# -lt 2 ]; then
