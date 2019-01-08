@@ -126,8 +126,23 @@ for e in 3500 4000 5000 8000 10000 15000 20000 25000 30000 35000 40000 45000 500
  base=qh*(100.0-lo)/100.0; fx=qw*(100.0-la)/100.0; printf "%d\t%.0f\t%.0f\t%.2f cm\t%.2f\t%.2f\t%.2f\t%.2f\n",e,hvp,hvm,e*p/10000.0,qw,qh,base,fx  } '
 done
 ;;
+soda)
+echo "------------------------------------------------------------------------"
+F=10.5771
+WPIX=5472
+HPIX=3648
+PIX=2.4
+# PARROT S.O.D.A mm pixel, pixel, microns  w=13.1328mm x h=8.7552mm
+printf "SODA   focal 10.57711 mm  rlong %d   rlat %d  pixel 2.4 microns FOV=hhxvvgraus\n" $FOLAP $SDLAP 
+printf "escala\thv_pes\thv_m\tgsd_cm\tfto_w_m\tfto_h_m\tbase(m)\tdist_fxfx(m)\n"
+#qh=quadro qw=largura
+for e in 3500 4000 5000 8000 10000 12000 15000 20000 25000 30000 35000 40000 42000 45000 50000 55000 75000; do
+    echo $e | awk -v f=$F -v wi=$WPIX -v hi=$HPIX -v p=$PIX -v lo=$FOLAP -v la=$SDLAP '{ e=$1; hvm=e*f/1000.0; hvp=hvm/0.3048; qw=wi*p*e/1000000; qh=hi*p*e/1000000;
+ base=qh*(100.0-lo)/100.0; fx=qw*(100.0-la)/100.0; printf "%d\t%.0f\t%.0f\t%.2f cm\t%.2f\t%.2f\t%.2f\t%.2f\n",e,hvp,hvm,e*p/10000.0,qw,qh,base,fx  } '
+done
+;;
 *)
-echo "dji | canon | sony | nikon | ixa | vexel | lmk "
+echo "dji | canon | sony | nikon | ixa | vexel | lmk | soda "
 ;;
 esac
 exit 0
