@@ -72,8 +72,17 @@ PIX=24
 # mm pixel, pixel, microns  w=23,338mm x h=23,953mm
 echo $F $PIX $GSD | awk '{ printf "ZeissLMK: focal= %.2f mm   pixel= %.5f microns GSD= %d cm  FlightHeight %.2f m\n", $1,$2,$3, $3*10*$1/$2  }'
 ;;
+soda)
+echo "------------------------------------------------------------------------"
+F=10.5771
+WPIX=5472
+HPIX=3648
+PIX=2.4
+# PARROT S.O.D.A mm pixel, pixel, microns  w=13.1328mm x h=8.7552mm
+echo $F $PIX $GSD | awk '{ printf "SODA: focal= %.2f mm   pixel= %.5f microns GSD= %d cm  FlightHeight %.2f m\n", $1,$2,$3, $3*10*$1/$2  }'
+;;
 *)
-echo "dji | canon | sony | nikon | ixa | vexel | lmk "
+echo "dji | canon | sony | nikon | ixa | vexel | lmk | soda "
 ;;
 esac
 exit 0
